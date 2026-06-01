@@ -9,18 +9,18 @@ An advanced Burp Suite extension written in Python (Jython) combined with a Linu
 
 ## Installation & Setup
 
-### 1. The Burp Extension (`burp_namer.py`)
+### 1. The Burp Extension (`RepeaterEndpointNamer.py`)
 1. Open Burp Suite -> `Extensions` -> `Options` -> `Python Environment` and ensure **Jython standalone JAR** is configured.
 2. Go to `Extensions` -> `Installed` -> Click **Add**.
-3. Select extension type as **Python** and choose `burp_namer.py`.
+3. Select extension type as **Python** and choose `RepeaterEndpointNamer.py`.
 
 ### 2. The Linux Automation Script (`burp_trigger.sh`)
 1. Install `xdotool` on your system: `sudo apt install xdotool -y`
-2. Move `burp_trigger.sh` to a permanent location (e.g., `/root/burp_trigger.sh`) and make it executable: `chmod +x burp_trigger.sh`.
+2. Move `burp_trigger.sh` to a permanent location (e.g., `/home/user/Burp-Endpoint-Namer/burp_trigger.sh`) and make it executable: `chmod +x burp_trigger.sh`.
 
 ### 3. Creating the Global Keyboard Shortcut
 1. Go to your Linux OS Settings -> `Keyboard Shortcuts` -> `Custom Shortcuts`.
-2. Add a new shortcut with the command: `/root/burp_trigger.sh`
+2. Add a new shortcut with the command: `/home/user/Burp-Endpoint-Namer/burp_trigger.sh`
 3. Map it to: `Ctrl + Alt + R` (or any shortcut you prefer).
 
 ## Usage
