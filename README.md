@@ -2,6 +2,20 @@
 
 An advanced Burp Suite extension written in Python (Jython) combined with a Linux automation script to automatically send HTTP requests to the **Repeater** and name the tabs.
 
+**Check your current environment:**
+Open your terminal and run:
+`echo $XDG_SESSION_TYPE`
+- If the output is `x11`, you are good to go!
+- If the output is `wayland`, you need to switch to X11.
+
+**How to switch to X11:**
+1. Log out of your current Linux session.
+2. At the login screen, select your username.
+3. Click the gear icon (⚙️) located at the bottom right.
+4. Select **GNOME on Xorg** (or your DE's X11 equivalent).
+5. Enter your password and log in.
+
+
 ## Installation & Setup
 
 ### 1. The Burp Extension (`RepeaterEndpointNamer.py`)
