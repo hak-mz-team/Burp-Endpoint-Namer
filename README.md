@@ -1,11 +1,6 @@
 # Burp Suite Endpoint Namer (Super Fast Shortcut)
 
-An advanced Burp Suite extension written in Python (Jython) combined with a Linux automation script to automatically send HTTP requests to the **Repeater** and name the tabs based on the last 15 characters of the **Endpoint** instead of annoying numbers.
-
-## Features
-- **Ultra Fast:** Bypasses Burp Suite API limitations using a background file-trigger system.
-- **Language-Proof:** Works perfectly even if your Linux keyboard layout is switched to non-English languages (like Arabic).
-- **Dynamic Context Aware:** Works from Proxy History, Repeater, and Target tabs without messing up dynamic context menus.
+An advanced Burp Suite extension written in Python (Jython) combined with a Linux automation script to automatically send HTTP requests to the **Repeater** and name the tabs.
 
 ## Installation & Setup
 
@@ -24,4 +19,4 @@ An advanced Burp Suite extension written in Python (Jython) combined with a Linu
 3. Map it to: `Ctrl + Alt + R` (or any shortcut you prefer).
 
 ## Usage
-Simply hover your mouse cursor over any HTTP request inside Burp Suite, press `Ctrl + Alt + R`, and watch the request instantly fly to the Repeater named properly!
+Simply press `Ctrl + Alt + R`, and watch the request instantly fly to the Repeater named properly!
