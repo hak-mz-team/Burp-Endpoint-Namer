@@ -1,36 +1,97 @@
-# Burp Suite Endpoint Namer (Super Fast Shortcut)
+# Burp Endpoint Namer
 
-An advanced Burp Suite extension written in Python (Jython) combined with a Linux automation script to automatically send HTTP requests to the **Repeater** and name the tabs.
+A lightweight Burp Suite extension written in Java using the official PortSwigger Montoya API.
 
-**Check your current environment:**
-Open your terminal and run:
-`echo $XDG_SESSION_TYPE`
-- If the output is `x11`, you are good to go!
-- If the output is `wayland`, you need to switch to X11.
+Burp Endpoint Namer adds a Ctrl+R shortcut that sends the current HTTP request directly to Repeater and automatically names the Repeater tab using the request endpoint.
 
-**How to switch to X11:**
-1. Log out of your current Linux session.
-2. At the login screen, select your username.
-3. Click the gear icon (⚙️) located at the bottom right.
-4. Select **GNOME on Xorg** (or your DE's X11 equivalent).
-5. Enter your password and log in.
+## Features
 
+- Send the current request to Repeater with Ctrl+R
+- Automatically name the Repeater tab
+- Ignore query parameters when generating the name
+- Remove trailing slashes from the path
+- Use the last path component as the Repeater tab name
 
-## Installation & Setup
+## Examples
 
-### 1. The Burp Extension (`RepeaterEndpointNamer.py`)
-1. Open Burp Suite -> `Extensions` -> `Options` -> `Python Environment` and ensure **Jython standalone JAR** is configured.
-2. Go to `Extensions` -> `Installed` -> Click **Add**.
-3. Select extension type as **Python** and choose `RepeaterEndpointNamer.py`.
+    /punctual/v1/refreshCreds?foo=123
+    -> refreshCreds
 
-### 2. The Linux Automation Script (`burp_trigger.sh`)
-1. Install `xdotool` on your system: `sudo apt install xdotool -y`
-2. Move `burp_trigger.sh` to a permanent location (e.g., `/home/user/Burp-Endpoint-Namer/burp_trigger.sh`) and make it executable: `chmod +x burp_trigger.sh`.
+    /api/users/123/reset-password?token=abc
+    -> reset-password
 
-### 3. Creating the Global Keyboard Shortcut
-1. Go to your Linux OS Settings -> `Keyboard Shortcuts` -> `Custom Shortcuts`.
-2. Add a new shortcut with the command: `/home/user/Burp-Endpoint-Namer/burp_trigger.sh`
-3. Map it to: `Ctrl + Alt + R` (or any shortcut you prefer).
+    /api/users/123/profile/
+    -> profile
+
+## Requirements
+
+- Burp Suite with Montoya API support
+- Java 17 or newer
+- Maven 3.x
+
+## Build
+
+Clone the repository:
+
+    git clone https://github.com/hak-mz-team/Burp-Endpoint-Namer.git
+    cd Burp-Endpoint-Namer
+
+Build the extension:
+
+    mvn clean package
+
+The compiled JAR will be created at:
+
+    target/burp-endpoint-namer-1.0.0.jar
+
+The extension has been built and tested successfully.
+
+## Install
+
+1. Open Burp Suite.
+2. Go to Extensions.
+3. Click Add.
+4. Select Java as the extension type.
+5. Select:
+
+       target/burp-endpoint-namer-1.0.0.jar
+
+6. Load the extension.
+
+After loading, the extension registers:
+
+    Send request to Repeater -> Ctrl+R
 
 ## Usage
-Simply press `Ctrl + Alt + R`, and watch the request instantly fly to the Repeater named properly!
+
+Open an HTTP message editor in Burp Suite and press:
+
+    Ctrl+R
+
+The request will be sent to Repeater and the tab will automatically be named after the endpoint.
+
+For example:
+
+    GET /api/account/reset-password?token=123 HTTP/1.1
+
+creates a Repeater tab named:
+
+    reset-password
+
+## Ctrl+R Conflict
+
+If Burp Suite already has another action assigned to Ctrl+R, remove or change that shortcut in Burp Suite's keyboard shortcut settings before using this extension.
+
+## Project Structure
+
+    Burp-Endpoint-Namer/
+    ├── pom.xml
+    ├── README.md
+    └── src/
+        └── main/
+            └── java/
+                └── Extension.java
+
+## License
+
+See the repository for licensing information.
