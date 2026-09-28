@@ -62,6 +62,20 @@ After loading, the extension registers:
 
     Send request to Repeater -> Ctrl+R
 
+## Important: Ctrl+R Shortcut Conflict
+
+Before using the extension, make sure Burp Suite does not already have another action assigned to Ctrl+R.
+
+If Ctrl+R is already assigned:
+
+1. Open Burp Suite settings.
+2. Go to the keyboard shortcuts / hotkeys settings.
+3. Find the existing Ctrl+R shortcut.
+4. Remove it or assign it to another key.
+5. Keep Ctrl+R available for Burp Endpoint Namer.
+
+The extension registers Ctrl+R for HTTP message editors.
+
 ## Usage
 
 Open an HTTP message editor in Burp Suite and press:
