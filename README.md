@@ -1,111 +1,98 @@
-# Burp Endpoint Namer
+# Burp-Endpoint-Namer
 
-A lightweight Burp Suite extension written in Java using the official PortSwigger Montoya API.
-
-Burp Endpoint Namer adds a Ctrl+R shortcut that sends the current HTTP request directly to Repeater and automatically names the Repeater tab using the request endpoint.
+A simple Burp Suite extension that sends the current HTTP request to Repeater and automatically names the Repeater tab using the endpoint name.
 
 ## Features
 
-- Send the current request to Repeater with Ctrl+R
-- Automatically name the Repeater tab
-- Ignore query parameters when generating the name
-- Remove trailing slashes from the path
-- Use the last path component as the Repeater tab name
+* Press `Ctrl+R` inside a Burp HTTP message editor.
+* Sends the current request directly to Repeater.
+* Automatically names the Repeater tab using the endpoint name.
+* Ignores query parameters.
+* Removes trailing slashes from endpoint names.
 
-## Examples
+### Example
 
-    /punctual/v1/refreshCreds?foo=123
-    -> refreshCreds
+```text
+/api/users/123/reset-password?token=abc
+```
 
-    /api/users/123/reset-password?token=abc
-    -> reset-password
+The Repeater tab will be named:
 
-    /api/users/123/profile/
-    -> profile
+```text
+reset-password
+```
 
-## Requirements
+## Installation
 
-- Burp Suite with Montoya API support
-- Java 17 or newer
-- Maven 3.x
+### Option 1 — Download the ready-made JAR
 
-## Build
+Download the latest release:
 
-Clone the repository:
+**[Download Burp-Endpoint-Namer](https://github.com/hak-mz-team/Burp-Endpoint-Namer/releases/latest)**
 
-    git clone https://github.com/hak-mz-team/Burp-Endpoint-Namer.git
-    cd Burp-Endpoint-Namer
+Then in Burp Suite:
 
-Build the extension:
+**Extensions → Installed → Add → Java**
 
-    mvn clean package
+Select:
 
-The compiled JAR will be created at:
+```text
+burp-endpoint-namer-1.0.0.jar
+```
 
-    target/burp-endpoint-namer-1.0.0.jar
+### Option 2 — Build from source
 
-The extension has been built and tested successfully.
+Requirements:
 
-## Install
+* Java 17+
+* Maven
 
-1. Open Burp Suite.
-2. Go to Extensions.
-3. Click Add.
-4. Select Java as the extension type.
-5. Select:
+Clone the repository and build:
 
-       target/burp-endpoint-namer-1.0.0.jar
+```bash
+git clone https://github.com/hak-mz-team/Burp-Endpoint-Namer.git
+cd Burp-Endpoint-Namer
+mvn clean package
+```
 
-6. Load the extension.
+The JAR will be created at:
 
-After loading, the extension registers:
-
-    Send request to Repeater -> Ctrl+R
+```text
+target/burp-endpoint-namer-1.0.0.jar
+```
 
 ## Important: Ctrl+R Shortcut Conflict
 
-Before using the extension, make sure Burp Suite does not already have another action assigned to Ctrl+R.
+Before using the extension, make sure Burp Suite does not already have another action assigned to `Ctrl+R`.
 
-If Ctrl+R is already assigned:
+If `Ctrl+R` is already assigned:
 
 1. Open Burp Suite settings.
 2. Go to the keyboard shortcuts / hotkeys settings.
-3. Find the existing Ctrl+R shortcut.
+3. Find the existing `Ctrl+R` shortcut.
 4. Remove it or assign it to another key.
-5. Keep Ctrl+R available for Burp Endpoint Namer.
+5. Keep `Ctrl+R` available for Burp-Endpoint-Namer.
 
-The extension registers Ctrl+R for HTTP message editors.
+The extension registers `Ctrl+R` for HTTP message editors.
 
-## Usage
+## Requirements
 
-Open an HTTP message editor in Burp Suite and press:
-
-    Ctrl+R
-
-The request will be sent to Repeater and the tab will automatically be named after the endpoint.
-
-For example:
-
-    GET /api/account/reset-password?token=123 HTTP/1.1
-
-creates a Repeater tab named:
-
-    reset-password
-
-## Ctrl+R Conflict
-
-If Burp Suite already has another action assigned to Ctrl+R, remove or change that shortcut in Burp Suite's keyboard shortcut settings before using this extension.
+* Burp Suite with Montoya API support.
+* Java 17+ compatible runtime.
 
 ## Project Structure
 
-    Burp-Endpoint-Namer/
-    ├── pom.xml
-    ├── README.md
-    └── src/
-        └── main/
-            └── java/
-                └── Extension.java
+```text
+Burp-Endpoint-Namer/
+├── src/
+│   └── main/
+│       └── java/
+│           └── Extension.java
+├── .gitignore
+├── pom.xml
+└── README.md
+```
 
-## License
+Build artifacts such as `target/` are intentionally excluded from the repository.
 
-See the repository for licensing information.
+
