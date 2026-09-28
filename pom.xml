@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>local.burp</groupId>
-    <artifactId>quick-repeater</artifactId>
+    <artifactId>burp-endpoint-namer</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -42,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Implementation-Title>Quick Repeater</Implementation-Title>
+                            <Implementation-Title>Burp-Endpoint-Namer</Implementation-Title>
                             <Implementation-Version>1.0.0</Implementation-Version>
                         </manifestEntries>
                     </archive>

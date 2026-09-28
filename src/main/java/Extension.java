@@ -10,7 +10,7 @@ public class Extension implements BurpExtension {
     @Override
     public void initialize(MontoyaApi api) {
 
-        api.extension().setName("Quick Repeater");
+        api.extension().setName("Burp-Endpoint-Namer");
 
         HotKey hotKey = HotKey.hotKey(
                 "Send request to Repeater",
@@ -46,7 +46,7 @@ public class Extension implements BurpExtension {
         );
 
         api.logging().logToOutput(
-                "Quick Repeater loaded - Ctrl+R"
+                "Burp-Endpoint-Namer loaded - Ctrl+R"
         );
     }
 
